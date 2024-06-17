@@ -8,16 +8,16 @@ import java.util.List;
 
 public class TestDatabuild {
 
-    public addPlace addPlacePayload() {
+    public addPlace addPlacePayload(String name, String language, String address) {
 
         addPlace aps = new addPlace();
 
         aps.setAccuracy(50);
-        aps.setName("Arindam Dalal");
+        aps.setName(name);
         aps.setPhone_number("(+91) 983 893 3937");
-        aps.setAddress("B-408,Arcadia,Sinhagad Road,Pune,Maharashtra,India");
+        aps.setAddress(address);
         aps.setWebsite("http://google.com");
-        aps.setLanguage("French-IN");
+        aps.setLanguage(language);
         List<String> typelist = new ArrayList<String>();
         typelist.add("shoe park");
         typelist.add("shop");

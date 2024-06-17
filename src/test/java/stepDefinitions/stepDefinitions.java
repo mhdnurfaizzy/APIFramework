@@ -31,10 +31,11 @@ public class stepDefinitions extends Utils {
     Response response;
     TestDatabuild data = new TestDatabuild();
 
-    @Given("Add Place Payload")
-    public void add_place_payload() throws IOException {
+    @Given("Add Place Payload {string} , {string} , {string}")
+    public void addPlacePayload(String name, String language, String address) throws IOException {
         // Write code here that turns the phrase above into concrete actions
-        res = given().spec(requestSpecification()).body(data.addPlacePayload());
+        res = given().spec(requestSpecification())
+                .body(data.addPlacePayload(name, language, address));
     }
     @When("User calls {string} with Post http request")
     public void user_calls_with_post_http_request(String string) {
@@ -58,7 +59,6 @@ public class stepDefinitions extends Utils {
         JsonPath js = new JsonPath(resp);
         assertEquals(js.get(keyValue).toString(), expectValue);
     }
-
 
 
 
