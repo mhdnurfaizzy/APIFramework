@@ -13,6 +13,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import packages.APIResources;
 import packages.TestDatabuild;
 import packages.Utils;
 
@@ -38,8 +39,10 @@ public class stepDefinitions extends Utils {
                 .body(data.addPlacePayload(name, language, address));
     }
     @When("User calls {string} with Post http request")
-    public void user_calls_with_post_http_request(String string) {
+    public void user_calls_with_post_http_request(String resource) {
         // Write code here that turns the phrase above into concrete actions
+        APIResources resourcesAPI = APIResources.valueOf(resource);
+        System.out.println(resourcesAPI.getResource());
         resSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
                 .expectContentType(ContentType.JSON).build();
