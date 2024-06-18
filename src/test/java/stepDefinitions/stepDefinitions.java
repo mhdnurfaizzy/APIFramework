@@ -38,17 +38,22 @@ public class stepDefinitions extends Utils {
         res = given().spec(requestSpecification())
                 .body(data.addPlacePayload(name, language, address));
     }
-    @When("User calls {string} with Post http request")
-    public void user_calls_with_post_http_request(String resource) {
+    @When("User calls {string} with {string} http request")
+    public void user_calls_with_http_request(String resource, String method) {
         // Write code here that turns the phrase above into concrete actions
+        //Constructor will be called with value of resource which you pass
         APIResources resourcesAPI = APIResources.valueOf(resource);
         System.out.println(resourcesAPI.getResource());
+
         resSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
                 .expectContentType(ContentType.JSON).build();
 
-        response = res.when().post("/maps/api/place/add/json")
-                .then().spec(resSpec).extract().response();
+        if(method.equalsIgnoreCase("POST"))
+            response = res.when().post(resourcesAPI.getResource());
+        else if (method.equalsIgnoreCase("GET"))
+            response = res.when().get(resourcesAPI.getResource());
+
     }
     @Then("The API call got success with status code {int}")
     public void the_api_call_got_success_with_status_code(Integer int1) {
