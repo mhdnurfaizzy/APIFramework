@@ -15,10 +15,11 @@ public class Utils {
     public static RequestSpecification req;
 
     public RequestSpecification requestSpecification() throws IOException {
-        if(req==null) {
-            PrintStream log = new PrintStream(new FileOutputStream("logging.txt",true));
 
-            RequestSpecification req = new RequestSpecBuilder()
+        if(req==null) {
+            PrintStream log = new PrintStream(new FileOutputStream("logging.txt"));
+
+            req = new RequestSpecBuilder()
                     .setBaseUri(getGlobalValue("baseURL"))
                     .addQueryParam("key", "qaclick123")
                     .addFilter(RequestLoggingFilter.logRequestTo(log))

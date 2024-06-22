@@ -2,14 +2,14 @@ package BDD.POJO;
 
 import java.util.List;
 
-public class addPlace {
+public class AddPlace {
     private int accuracy;
     private String name;
     private String phone_number;
     private String address;
     private String website;
     private String language;
-    private location location;
+    private Location location;
     private List<String> types;
 
     public int getAccuracy() {
@@ -60,11 +60,11 @@ public class addPlace {
         this.language = language;
     }
 
-    public BDD.POJO.location getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(BDD.POJO.location location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
